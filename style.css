@@ -367,44 +367,77 @@
     transform: scale(1.05);
 }
 
-.skills-div {
-    max-width: 1200px;
-    margin: 0 auto;
+.skills-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding: 2rem;
+  justify-items: center;
 }
 
-.row-1, .row-2, .row-3 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 40px;
-    margin-bottom: 40px;
+.skill-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  width: 160px;
+  height: 170px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: 
+    transform 0.3s ease, 
+    box-shadow 0.3s ease, 
+    background 0.3s ease, 
+    color 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
+  cursor: pointer;
 }
 
-.row-1 img, .row-2 img, .row-3 img {
-    transition: transform 0.3s ease, filter 0.3s ease;
-    border-radius: 8px;
+.skill-card img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 0.7rem;
+  transition: filter 0.3s ease;
 }
 
-.row-1 img:hover, .row-2 img:hover, .row-3 img:hover {
-    transform: scale(1.1);
-    filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.5));
-}
-.row-2{
-    margin-bottom: 80px;
+.skill-card h3 {
+  color: #fff;
+  font-size: 1rem;
+  text-align: center;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .row-1, .row-2, .row-3 {
-        gap: 20px;
-    }
-    
-    .row-1 img, .row-2 img, .row-3 img {
-        max-width: 100px;
-        height: auto;
-    }
+.skill-card:hover {
+  transform: translateY(-8px);
+  background: #fff;
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
 }
+
+.skill-card:hover h3 {
+  color: #000;
+}
+
+.skill-card:hover img {
+  filter: brightness(0) saturate(100%) invert(0);
+}
+
+/* Responsive layout for smaller screens */
+@media (max-width: 900px) {
+  .skills-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .skills-container {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ---------- PROJECTS SECTION ---------- */
 #projects {
   min-height: 100vh;
